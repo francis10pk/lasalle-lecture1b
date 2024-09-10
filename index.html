@@ -1,0 +1,37 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF.8">
+        <title>LaSalle Vue  Class</title>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <style>
+            li.colored{
+                background-color: lightcoral;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Hello,</h1>
+        <p>Welcome to LaSalle</p>
+        <div id="app">
+            <h3>This course is {{ title  }}</h3>
+            <p v-if="showTime">Program starts at {{  time  }}</p>
+            <p>Average age on the class is {{  age  }}</p>
+
+            <button v-on:click="increaseAge()">Increase</button>
+            <button v-on:click="decreaseAge()">Decrease</button>
+            <br/>
+            <button v-on:click="handleShowTime()">{{  Show  }} Time</button>
+            <button v-on:click="handleShowTime2()">
+                <span v-if="showTime">Hide Time</span>
+                <span v-if="!showTime">Show Time</span>
+            </button>
+            <p>Students in the class:</p>
+            <div v-for="member in filteredStudents">
+                <ul>
+                    <li v-bind:class="{colored: member.isStudent}">Name: {{member.name}} - Job:{{member.job}}</li>
+                </ul>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
+</html>
